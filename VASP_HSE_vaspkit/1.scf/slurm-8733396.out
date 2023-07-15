@@ -1,0 +1,104 @@
+cmdModule.c(567):ERROR:50: Cannot open file '/opt/hpc/software/modules/mpi/hpcx/2.11.0/gcc-7.3.1' for 'reading'
+ 
+:: initializing oneAPI environment ...
+   slurm_script: BASH_VERSION = 4.2.46(2)-release
+   args: Using "$@" for setvars.sh arguments: 
+:: advisor -- latest
+:: ccl -- latest
+:: clck -- latest
+:: compiler -- latest
+:: dal -- latest
+:: debugger -- latest
+:: dev-utilities -- latest
+:: dnnl -- latest
+:: dpcpp-ct -- latest
+:: dpl -- latest
+:: inspector -- latest
+:: intelpython -- latest
+:: ipp -- latest
+:: ippcp -- latest
+:: ipp -- latest
+:: itac -- latest
+:: mkl -- latest
+:: mpi -- latest
+:: tbb -- latest
+:: vpl -- latest
+:: vtune -- latest
+:: oneAPI environment initialized ::
+ 
+Sat Jul 15 20:49:18 CST 2023
+ running on   30 total cores
+ distrk:  each k-point on   30 cores,    1 groups
+ distr:  one band on    1 cores,   30 groups
+ vasp.6.3.0 20Jan22 (build Jan 26 2022 20:51:09) complex                        
+  
+ POSCAR found type information on POSCAR C 
+ POSCAR found :  1 types and       2 ions
+ scaLAPACK will be used
+ -----------------------------------------------------------------------------
+|                                                                             |
+|           W    W    AA    RRRRR   N    N  II  N    N   GGGG   !!!           |
+|           W    W   A  A   R    R  NN   N  II  NN   N  G    G  !!!           |
+|           W    W  A    A  R    R  N N  N  II  N N  N  G       !!!           |
+|           W WW W  AAAAAA  RRRRR   N  N N  II  N  N N  G  GGG   !            |
+|           WW  WW  A    A  R   R   N   NN  II  N   NN  G    G                |
+|           W    W  A    A  R    R  N    N  II  N    N   GGGG   !!!           |
+|                                                                             |
+|     The value NPAR = 4 specified in the INCAR file was overwritten,         |
+|     because it was not compatible with the 30 processes available:          |
+|     NPAR = 30                                                               |
+|     was used instead, please check that this makes sense for your           |
+|     machine.                                                                |
+|                                                                             |
+ -----------------------------------------------------------------------------
+
+ -----------------------------------------------------------------------------
+|                                                                             |
+|           W    W    AA    RRRRR   N    N  II  N    N   GGGG   !!!           |
+|           W    W   A  A   R    R  NN   N  II  NN   N  G    G  !!!           |
+|           W    W  A    A  R    R  N N  N  II  N N  N  G       !!!           |
+|           W WW W  AAAAAA  RRRRR   N  N N  II  N  N N  G  GGG   !            |
+|           WW  WW  A    A  R   R   N   NN  II  N   NN  G    G                |
+|           W    W  A    A  R    R  N    N  II  N    N   GGGG   !!!           |
+|                                                                             |
+|     For optimal performance we recommend to set                             |
+|       NCORE = 2 up to number-of-cores-per-socket                            |
+|     NCORE specifies how many cores store one orbital (NPAR=cpu/NCORE).      |
+|     This setting can greatly improve the performance of VASP for DFT.       |
+|     The default, NCORE=1 might be grossly inefficient on modern             |
+|     multi-core architectures or massively parallel machines. Do your        |
+|     own testing! More info at https://www.vasp.at/wiki/index.php/NCORE      |
+|     Unfortunately you need to use the default for GW and RPA                |
+|     calculations (for HF NCORE is supported but not extensively tested      |
+|     yet).                                                                   |
+|                                                                             |
+ -----------------------------------------------------------------------------
+
+ LDA part: xc-table for Pade appr. of Perdew
+ POSCAR, INCAR and KPOINTS ok, starting setup
+ FFT: planning ... GRIDC
+ FFT: planning ... GRID_SOFT
+ FFT: planning ... GRID
+ WAVECAR not read
+ entering main loop
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1    -0.280886943285E+01   -0.28089E+01   -0.43170E+03 10140   0.207E+02
+DAV:   2    -0.196639705421E+02   -0.16855E+02   -0.16855E+02 15060   0.341E+01
+DAV:   3    -0.197122278646E+02   -0.48257E-01   -0.48251E-01 10950   0.232E+00
+DAV:   4    -0.197123650331E+02   -0.13717E-03   -0.13717E-03 18630   0.124E-01
+DAV:   5    -0.197123652027E+02   -0.16955E-06   -0.16969E-06 10950   0.169E-03    0.629E+00
+DAV:   6    -0.188080546954E+02    0.90431E+00   -0.88405E-01 13290   0.180E+00    0.372E+00
+DAV:   7    -0.184589530603E+02    0.34910E+00   -0.11324E+00 13170   0.198E+00    0.944E-01
+DAV:   8    -0.184505556208E+02    0.83974E-02   -0.71119E-03 16260   0.235E-01    0.102E-01
+DAV:   9    -0.184477216621E+02    0.28340E-02   -0.14931E-03 15300   0.571E-02    0.805E-02
+DAV:  10    -0.184445779011E+02    0.31438E-02   -0.22637E-03 13620   0.665E-02    0.427E-02
+DAV:  11    -0.184453425034E+02   -0.76460E-03   -0.37099E-04 12900   0.290E-02    0.192E-02
+DAV:  12    -0.184461695774E+02   -0.82707E-03   -0.93600E-05 14400   0.146E-02    0.132E-02
+DAV:  13    -0.184470489020E+02   -0.87932E-03   -0.20104E-04 13230   0.152E-02    0.247E-03
+DAV:  14    -0.184470875435E+02   -0.38641E-04   -0.26495E-06 14220   0.238E-03    0.100E-03
+DAV:  15    -0.184471112400E+02   -0.23697E-04   -0.32612E-06 12600   0.176E-03    0.184E-04
+DAV:  16    -0.184471135071E+02   -0.22671E-05   -0.19926E-07 12390   0.450E-04    0.160E-04
+DAV:  17    -0.184471135444E+02   -0.37326E-07   -0.61825E-08 13230   0.520E-05
+   1 F= -.18447114E+02 E0= -.18446939E+02  d E =-.348265E-03
+ writing wavefunctions
+Sat Jul 15 20:51:15 CST 2023

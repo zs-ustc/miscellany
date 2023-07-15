@@ -1,0 +1,9 @@
+#1. PBE self-consistent
+echo -e "302\n" | vaspkit # Get KPATH.in
+echo -e "251\n2\n0.03\n0.03\n" | vaspkit # Get KPOINTS
+# submit the job
+
+#2. HSE self-consistent
+# Change INCAR and submit the job
+echo -e "911\n" | vaspkit # get BAND_GAP
+echo -e "252\n" | vaspkit

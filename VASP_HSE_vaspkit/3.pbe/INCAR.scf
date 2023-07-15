@@ -1,0 +1,30 @@
+Global Parameters
+ISTART =  0            (Read existing wavefunction; if there)
+ISPIN  =  1            (Non-Spin polarised DFT)
+LREAL  = .FALSE.       (Projection operators: automatic)
+ENCUT  =  520        (Cut-off energy for plane wave basis set, in eV)
+PREC   =  A       (Precision level)
+LWAVE  = .TRUE.        (Write WAVECAR or not)
+LCHARG = .TRUE.        (Write CHGCAR or not)
+ADDGRID= F        (Increase grid; helps GGA convergence)
+
+# K-mesh
+# KSPACING = 0.2000
+# KGAMMA = .FALSE.
+
+Electronic Relaxation
+ISMEAR =  0            (Gaussian smearing; metals:1)
+SIGMA  =  0.05         (Smearing value in eV; metals:0.2)
+NELM   =  200
+EDIFF  =  1E-6        (SCF energy convergence; in eV)
+ 
+Ionic Relaxation
+NSW    =  0          (Max ionic steps)
+IBRION =  -1            (Algorithm: 0-MD; 1-Quasi-New; 2-CG)
+ISIF   =  3           (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 4-Shape/Ions)
+EDIFFG = -1E-05        (Ionic convergence; eV/AA)
+# ISYM = 0
+
+#LAECHG = .TRUE.
+
+NCORE = 15
