@@ -8,7 +8,8 @@ PREC   =  A       (Precision level)
 LWAVE  = .FALSE.        (Write WAVECAR or not)
 LCHARG = .FALSE.        (Write CHGCAR or not)
 ADDGRID= F        (Increase grid; helps GGA convergence)
-
+LORBIT = 11
+NEDOS = 2000 
 # K-mesh
 # KSPACING = 0.2000
 # KGAMMA = .FALSE.
