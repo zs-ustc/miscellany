@@ -2,13 +2,13 @@
 filename=data/POSCAR
 if [ -f $filename ];then
 	mkdir band
-	mkdir band/3.pbe
+	mkdir band/1.pbe_scf
 	cp data/POSCAR band/POSCAR
-	cd band/3.pbe
+	cd band/1.pbe_scf
 	ln -s ../POSCAR
 	echo -e "103\n"|vaspkit | grep POTCAR File No. && mv POTCAR ../ && ln -s ../POTCAR
-	cp ../../data/INCAR* .
-	cp ../../vasp.sub pbe.sub
+	cp ../../data/INCAR.scf .
+	cp ../../vasp.sub pbe_scf.sub
 	cp INCAR.scf INCAR
 	sbatch *.sub
 	cd ../../..
