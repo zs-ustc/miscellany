@@ -1,19 +1,33 @@
 #!/bin/bash
-filename=data/POSCAR
-fp_cmd=sbatch *.sub
-if [ -f ${filename} ];then
-	mkdir band
-	mkdir band/1.pbe_scf
-	cp data/POSCAR band/POSCAR
-	cd band/1.pbe_scf
-	ln -s ../POSCAR
-	echo -e "103\n"|vaspkit | grep POTCAR File No. && mv POTCAR ../ && ln -s ../POTCAR
-	cp ../../data/INCAR.scf .
-	cp ../../vasp.sub pbe_scf.sub
-	cp INCAR.scf INCAR
-	`${fp_cmd}`
-	cd ../../..
+
+# Prepare necessiary files in data/ directory: POSCAR, INCAR.scf, vasp.sub
+NCORE=16
+# filename is the filename of POSCAR stored in data
+filename=POSCAR
+workspace=band
+batch_type=sh
+# batch_type=sh/qsub
+pwd_init=`pwd`
+
+
+if [ -f data/${filename} ];then
+    mkdir ${workspace}
+    mkdir ${workspace}/1.pbe_scf
+    cp ${pwd_init}/data/POSCAR ${pwd_init}/${workspace}/POSCAR
+    cd ${pwd_init}/${workspace}/1.pbe_scf
+    ln -s ../POSCAR
+    echo -e "103\n"|vaspkit | grep "POTCAR File No." && mv POTCAR ../ && ln -s ../POTCAR
+    cp ${pwd_init}/data/INCAR.scf .
+    cp ${pwd_init}/data/vasp.sub pbe_scf.sub
+    cp INCAR.scf INCAR && sed -i "s/^.*NCORE.*$/NCORE = ${NCORE}/" INCAR
+    if [ ${batch_type}=sh ];then
+        nohup sh *.sub > sh_${workspace}_pbe_scf.out 2>&1 &
+    else
+        ${fp_cmd} *.sub
+    fi
+    cd ${pwd_init}
 fi
+
 
 
 #dir=x
