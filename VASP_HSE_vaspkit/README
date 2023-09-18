@@ -1,6 +1,6 @@
 #1. PBE self-consistent
 echo -e "302\n" | vaspkit # Get KPATH.in
-echo -e "251\n2\n0.03\n0.03\n" | vaspkit # Get KPOINTS
+echo -e "251\n2\n0.03\n0.05\n" | vaspkit # Get KPOINTS
 # submit the job
 
 #2. HSE self-consistent
