@@ -5,7 +5,7 @@ NCORE=16
 # filename is the filename of POSCAR stored in data
 filename=POSCAR
 workspace=band
-batch_type=sh
+batch_type=sbatch
 # batch_type=sh/qsub
 pwd_init=`pwd`
 
