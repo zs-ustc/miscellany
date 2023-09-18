@@ -1,6 +1,7 @@
 #!/bin/bash
 filename=data/POSCAR
-if [ -f $filename ];then
+fp_cmd=sbatch *.sub
+if [ -f ${filename} ];then
 	mkdir band
 	mkdir band/1.pbe_scf
 	cp data/POSCAR band/POSCAR
@@ -10,7 +11,7 @@ if [ -f $filename ];then
 	cp ../../data/INCAR.scf .
 	cp ../../vasp.sub pbe_scf.sub
 	cp INCAR.scf INCAR
-	sbatch *.sub
+	`${fp_cmd}`
 	cd ../../..
 fi
 
