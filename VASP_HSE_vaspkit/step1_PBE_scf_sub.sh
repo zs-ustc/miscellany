@@ -1,30 +1,44 @@
 #!/bin/bash
 
 # Prepare necessiary files in data/ directory: POSCAR, INCAR.scf, vasp.sub
-NCORE=16
-# filename is the filename of POSCAR stored in data
-filename=POSCAR
-workspace=band
-batch_type=sbatch
-# batch_type=sh/qsub
+
+# Parameters setting
+    NCORE=16
+    # filename is the filename of POSCAR stored in data
+    filename=POSCAR
+    workspace=band
+    # Batch type
+    batch_type=sbatch
+     # batch_type=sh/qsub
+
+# Run
 pwd_init=`pwd`
-
-
 if [ -f data/${filename} ];then
-    mkdir ${workspace}
-    mkdir ${workspace}/1.pbe_scf
+    # Make directory
+    mkdir ${workspace} && mkdir ${workspace}/1.pbe_scf
+
+    # POSCAR and POTCAR for all calculations
     cp ${pwd_init}/data/POSCAR ${pwd_init}/${workspace}/POSCAR
+    echo -e "103\n"|vaspkit | grep "POTCAR File No."
+
+    # POSCAR and POTCAR
     cd ${pwd_init}/${workspace}/1.pbe_scf
-    ln -s ../POSCAR
-    echo -e "103\n"|vaspkit | grep "POTCAR File No." && mv POTCAR ../ && ln -s ../POTCAR
-    cp ${pwd_init}/data/INCAR.scf .
+    ln -s ../POSCAR && ln -s ../POTCAR
+
+    # INCAR
+    cp ${pwd_init}/data/INCAR.scf INCAR && sed -i "s/^.*NCORE.*$/NCORE = ${NCORE}/" INCAR
+
+    # Submitting script
     cp ${pwd_init}/data/vasp.sub pbe_scf.sub
-    cp INCAR.scf INCAR && sed -i "s/^.*NCORE.*$/NCORE = ${NCORE}/" INCAR
+
+    # Submit jobs
     if [ ${batch_type}=sh ];then
         nohup sh *.sub > sh_${workspace}_pbe_scf.out 2>&1 &
     else
         ${fp_cmd} *.sub
     fi
+
+    # Get back to initial directory
     cd ${pwd_init}
 fi
 
