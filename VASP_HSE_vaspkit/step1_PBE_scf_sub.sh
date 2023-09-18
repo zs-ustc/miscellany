@@ -29,7 +29,7 @@ if [ -f data/${filename} ];then
     cp ${pwd_init}/data/INCAR.scf INCAR && sed -i "s/^.*NCORE.*$/NCORE = ${NCORE}/" INCAR
 
     # Submitting script
-    cp ${pwd_init}/data/vasp.sub pbe_scf.sub
+    cp ${pwd_init}/data/vasp.sub ${filename}_pbe_scf.sub
 
     # Submit jobs
     if [ ${batch_type}=sh ];then
