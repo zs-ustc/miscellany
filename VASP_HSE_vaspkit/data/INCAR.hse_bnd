@@ -28,7 +28,6 @@ EDIFFG = -5E-02        (Ionic convergence; eV/AA)
 PSTRESS = 0
 #ISYM = 0
 #SYMPREC = 1e-8
-IVDW = 12
 
 LHFCALC = .TRUE.           #HSE06计算参数
 HFSCREEN = 0.2             #HSE06计算参数
