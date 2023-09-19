@@ -1,13 +1,19 @@
-#### Perform a HSE06 calculation easily:
-###### 0. VASP and vaspkit toolkit are required to install properly.
+## Easy perform a HSE06 calculation.
+### 0. VASP and vaspkit toolkit are required to install properly.
 
-###### 1. Perform a PBE self-consistent
-echo -e "302\n" | vaspkit # Get KPATH.in
-echo -e "251\n2\n0.03\n0.05\n" | vaspkit # Get KPOINTS
-> submit the job
-echo -e "252\n" | vaspkit # get BAND STRUCTURE by PBE exchange-correlation functional.
+### 1. Perform a PBE self-consistent.
+1. Get KPATH.in:   
+  `echo -e "302\n" | vaspkit`   
+2. Get KPOINTS with and without weights:  
+  `echo -e "251\n2\n0.03\n0.05\n" | vaspkit` 
+3. Submit the job.   
+4. Get BAND STRUCTURE by PBE exchange-correlation functional.  
+  `echo -e "252\n" | vaspkit`  
 
-###### 2. HSE self-consistent
-> Change INCAR (add the HSE06 part) and submit the job
-echo -e "911\n" | vaspkit # get BAND_GAP
-echo -e "252\n" | vaspkit # get BAND STRUCTURES of HSE06 hybrid functional.
+### 2. HSE self-consistent.
+1. Change INCAR (add the HSE06 part) and submit the job.
+2. Get BAND_GAP:  
+`echo -e "911\n" | vaspkit`
+3. Get BAND STRUCTURES of HSE06 hybrid functional:  
+`echo -e "252\n" | vaspkit`
+
