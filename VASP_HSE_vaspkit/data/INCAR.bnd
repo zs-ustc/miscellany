@@ -26,8 +26,7 @@ ISIF   =  3            (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 4-Shape/Ions)
 EDIFFG = -5E-02        (Ionic convergence; eV/AA)
 
 PSTRESS = 0
-ISYM = 0
-SYMPREC = 1e-8
-IVDW = 12
+#ISYM = 0
+#SYMPREC = 1e-8
 
 NCORE = 16
