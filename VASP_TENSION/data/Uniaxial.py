@@ -106,7 +106,7 @@ for n_stage in range(max_step):
             print("stress of ", path_input," is: ", stress_input)
             print("Current stage: ",n_stage)
             sys.stdout.flush()
-            if (n_stage>5 and stress_input<1):
+            if (pre_strain>0.05 and float(stress_input)<1):
                 print("Last stress is very small, Chech if it is broken")
                 os.system("python read_stress_strain.py")
                 os.system("cp %s.jpg ../data/"%(cur_filename[0]))
