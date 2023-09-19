@@ -1,4 +1,4 @@
-## Easy perform a HSE06 calculation.
+## Easy perform an HSE06 calculation.
 ### 0. VASP and vaspkit toolkit are required to install properly.
 
 ### 1. Perform a PBE self-consistent.
