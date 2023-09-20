@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Prepare necessiary files in data/ directory: POSCAR, INCAR.scf, vasp.sub
+# Prepare necessiary files in data/ directory: POSCAR_filename, INCAR.scf, vasp.sub
 
 # Parameters setting
     NCORE=16
@@ -10,6 +10,9 @@
     # Batch type
     batch_type=sbatch
      # batch_type=sh/qsub
+echo "
+Step 1: Perform scf calculation"
+
 
 # Run
 pwd_init=`pwd`
