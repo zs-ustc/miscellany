@@ -21,7 +21,7 @@ if [ -f data/${filename} ];then
 		ln -s ../POSCAR && ln -s ../POTCAR 
 	else
 		cd ..
-		cp ${pwd_init}/data/POSCAR ${pwd_init}/${workspace}/POSCAR
+		cp ${pwd_init}/data/${filename} ${pwd_init}/${workspace}/POSCAR
 		echo -e "103\n"|vaspkit | grep "POTCAR File No."
 		cd 3.hse_pbe && ln -s ../POSCAR && ln -s ../POTCAR 
 	fi
