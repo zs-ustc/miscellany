@@ -3,6 +3,7 @@
 # Files required in data/ directory: POSCAR_filename, INCAR.scf, vasp.sub.hse_pbe
 
 # Parameters setting
+    I2D=1
     NCORE=16
     # Filename is the filename of POSCAR stored in data
     filename=POSCAR
@@ -36,7 +37,11 @@ if [ -f data/${filename} ];then
 	
     
 	# KPOINTS: Get line-mode KPOINTS automatically:
-	[[ -f ../2.pbe_bnd/KPATH.in ]] && cp ../2.pbe_bnd/KPATH.in . || echo -e "302\n2\n" | vaspkit | grep ' ]'
+	if [ -f ../2.pbe_bnd/KPATH.in ];then
+ 		cp ../2.pbe_bnd/KPATH.in .
+   	else
+    		[[ ${I2D} == 1 ]] && echo -e "302\n2\n" | vaspkit | grep ' ]' || echo -e "303\n2\n" | vaspkit | grep ' ]'
+      	fi
 	# Or use a specified KPATH only contains VBM and CBM
 	 # cp ${pwd_init}/data/KPATH_${filename}.in KPATH.in
 	echo -e "251\n2\n0.03\n0.03\n1\n" | vaspkit | grep "K-"
