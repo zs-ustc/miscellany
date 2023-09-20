@@ -13,7 +13,7 @@
     
 echo "
 
-Step 4/Step 1: BAND_GAP of HSE06.
+Step 4/Step 2: BAND_GAP of HSE06.
 
 POSCAR name  :   ${filename}
 Workspace    :   ${workspace}
