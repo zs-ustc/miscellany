@@ -18,7 +18,7 @@ if [ -f data/${filename} ];then
     mkdir ${workspace} && mkdir ${workspace}/1.pbe_scf
 
     # POSCAR and POTCAR for all calculations
-    cp ${pwd_init}/data/POSCAR ${pwd_init}/${workspace}/POSCAR
+    cp ${pwd_init}/data/${filename} ${pwd_init}/${workspace}/POSCAR
     echo -e "103\n"|vaspkit | grep "POTCAR File No."
 
     # POSCAR and POTCAR
