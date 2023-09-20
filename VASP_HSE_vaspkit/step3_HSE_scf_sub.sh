@@ -5,7 +5,7 @@
 # Parameters setting
     NCORE=16
     # Filename is the filename of POSCAR stored in data
-    filename=POSCAR
+    filename=POSCAR_2atoms
     workspace=band
     # Batch type
     batch_type=sbatch
@@ -28,7 +28,7 @@ if [ -f data/${filename} ];then
 	
     
 	# KPOINTS: Get line-mode KPOINTS automatically:
-	cp ../2.pbe_bnd/KPATH.in .
+	[[ -f ../2.pbe_bnd/KPATH.in ]] && cp ../2.pbe_bnd/KPATH.in . || echo -e "302\n2\n" | vaspkit | grep ' ]'
 	# Or use a specified KPATH only contains VBM and CBM
 	 # cp ${pwd_init}/data/KPATH_${filename}.in KPATH.in
 	echo -e "251\n2\n0.03\n0.03\n1\n" | vaspkit | grep "K-"
