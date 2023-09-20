@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Prepare necessiary files in data/ directory: POSCAR, INCAR.scf, vasp.sub.hse_pbe
+# Files required in data/ directory: POSCAR_filename, INCAR.scf, vasp.sub.hse_pbe
 
 # Parameters setting
     NCORE=16
@@ -14,10 +14,18 @@
 pwd_init=`pwd`
 if [ -f data/${filename} ];then
 	# Make directory
-    cd ${workspace} && mkdir 3.hse_pbe && cd ${pwd_init}/${workspace}/3.hse_pbe
+	mkdir -p ${pwd_init}/${workspace}/3.hse_pbe && cd ${pwd_init}/${workspace}/3.hse_pbe
 	
 	# Link POSCAR POTCAR WAVECAR CHGCAR
-	ln -s ../POSCAR && ln -s ../POTCAR
+	if [ -f ../POTCAR ]; then
+		ln -s ../POSCAR && ln -s ../POTCAR 
+	else
+		cd ..
+		cp ${pwd_init}/data/POSCAR ${pwd_init}/${workspace}/POSCAR
+		echo -e "103\n"|vaspkit | grep "POTCAR File No."
+		cd 3.hse_pbe && ln -s ../POSCAR && ln -s ../POTCAR 
+	fi
+	
     
 	# KPOINTS: Get line-mode KPOINTS automatically:
 	cp ../2.pbe_bnd/KPATH.in .
