@@ -63,7 +63,7 @@ if [ -f data/${filename} ];then
         nohup sh *.sub > ${workspace}_hse_pbe.out 2>&1 &
 		echo "Shell job's submitted, directory: ${pwd_init}/${workspace}/3.hse_pbe"
     else
-        ${fp_cmd} *.sub
+        ${batch_type} *.sub
     fi
 	
 	# Get back to initial directory
