@@ -37,7 +37,7 @@ if [ -f data/${filename} ];then
 	echo 'grep "Band Gap" BAND_GAP'>>${filename}_hse_bnd.sub
 	
 	# submit jobs
-    if [ ${batch_type}=sh ];then
+    if [ ${batch_type} == sh ];then
         nohup sh *.sub > ${workspace}_hse_bnd.out 2>&1 &
         echo "Shell job's submitted, directory: ${pwd_init}/${workspace}/4.hse_bnd"
     else
