@@ -10,7 +10,17 @@
     # Batch type
     batch_type=sbatch
     # batch_type=sh/qsub
+    
+echo "
 
+Step 4/Step 1: BAND_GAP of HSE06.
+
+POSCAR name  :   ${filename}
+Workspace    :   ${workspace}
+Batch type   :   ${batch_type}"
+[[ $I2D == 1 ]] && echo "Dimension    :   2D"
+
+#run
 pwd_init=`pwd`
 if [ -f data/${filename} ];then
 	# Make directory
