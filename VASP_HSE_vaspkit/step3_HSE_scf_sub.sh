@@ -5,12 +5,20 @@
 # Parameters setting
     NCORE=16
     # Filename is the filename of POSCAR stored in data
-    filename=POSCAR_2atoms
+    filename=POSCAR
     workspace=band
     # Batch type
     batch_type=sbatch
     # batch_type=sh/qsub
+    
+echo "
 
+Step 3/Step 1: BAND_GAP of PBE_PBE.
+
+POSCAR name  :   ${filename}
+Workspace    :   ${workspace}
+Batch type   :   ${batch_type}"
+[[ $I2D == 1 ]] && echo "Dimension    :   2D"
 pwd_init=`pwd`
 if [ -f data/${filename} ];then
 	# Make directory
