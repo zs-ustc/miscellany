@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Prepare necessiary files in data/ directory: POSCAR, INCAR.hse_bnd, vasp.sub.hse_bnd, [KPATH_${filename}.in]
+# Prepare necessiary files in data/ directory: POSCAR_filename, INCAR.hse_bnd, vasp.sub.hse_bnd, [KPATH_${filename}.in]
 
 # Parameters setting
     NCORE=16
