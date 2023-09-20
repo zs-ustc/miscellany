@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Prepare necessiary files in data/ directory: POSCAR, INCAR.scf, vasp.sub.hse_pbe
+# Prepare necessiary files in data/ directory: POSCAR, INCAR.hse_bnd, vasp.sub.hse_bnd, [KPATH_${filename}.in]
 
 # Parameters setting
     NCORE=16
@@ -27,10 +27,10 @@ if [ -f data/${filename} ];then
 	mkdir -p ${pwd_init}/${workspace}/4.hse_bnd && cd ${pwd_init}/${workspace}/4.hse_bnd
 	if [ -f ../3.hse_pbe/finished ]; then
 	# Link POSCAR POTCAR WAVECAR CHGCAR
-	ln -s ../POSCAR && ln -s ../POTCAR && ln -s ../WAVECAR && ln -s ../CHGCAR
+	ln -s ../POSCAR && ln -s ../POTCAR && ln -s ../3.hse_pbe/WAVECAR && ln -s ../3.hse_pbe/CHGCAR
     
 	# KPOINTS: Get line-mode KPOINTS automatically:
-	cp ../3.hse_pbe/KPATH.in . && cp ../3.hse_pbe/KPOINTS .
+	cp ../3.hse_pbe/KPATH.in . && echo -e "251\n2\n0.03\n0.05\n2\n"|vaspkit|grep "K-"
 	# Or use a specified KPATH only contains VBM and CBM
 	 # cp ${pwd_init}/data/KPATH_${filename}.in KPATH.in
 	# If possible, don't set ISYM=0 in INCAR.
