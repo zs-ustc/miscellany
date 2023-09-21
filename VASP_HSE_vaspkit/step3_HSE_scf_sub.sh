@@ -3,10 +3,10 @@
 # Files required in data/ directory: POSCAR_filename, INCAR.scf, vasp.sub.hse_pbe
 
 # Parameters setting
-	I2D=1
+    I2D=1
     NCORE=15
     # Filename is the filename of POSCAR stored in data
-	POSCAR_dir=CONTCAR_collect
+    POSCAR_dir=CONTCAR_collect
     filename=POSCAR
     workspace=tension
     # Batch type
