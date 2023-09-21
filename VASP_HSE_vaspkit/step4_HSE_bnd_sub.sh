@@ -32,7 +32,7 @@ if [ -f data/${POSCAR_dir}/${filename} ];then
 	ln -s ../POSCAR && ln -s ../POTCAR && ln -s ../3.hse_pbe/WAVECAR && ln -s ../3.hse_pbe/CHGCAR
     
 	# KPOINTS: Get line-mode KPOINTS automatically:
- 	[[ -f ${pwd_init}/data/KPATH_${filename}.in ]] && cp ${pwd_init}/data/${KPATH_dir}/KPATH_${filename}.in KPATH.in ||cp ../3.hse_pbe/KPATH.in .
+ 	[[ -f ${pwd_init}/data/${KPATH_dir}/KPATH_${filename}.in ]] && cp ${pwd_init}/data/${KPATH_dir}/KPATH_${filename}.in KPATH.in ||cp ../3.hse_pbe/KPATH.in .
 	echo -e "251\n2\n0.03\n0.05\n2\n"|vaspkit|grep "K-"
 	# Or use a specified KPATH only contains VBM and CBM
 	 # cp ${pwd_init}/data/KPATH_${filename}.in KPATH.in
