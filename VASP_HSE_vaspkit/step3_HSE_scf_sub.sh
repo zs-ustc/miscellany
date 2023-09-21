@@ -3,25 +3,26 @@
 # Files required in data/ directory: POSCAR_filename, INCAR.scf, vasp.sub.hse_pbe
 
 # Parameters setting
-    I2D=1
-    NCORE=16
+	I2D=1
+    NCORE=15
     # Filename is the filename of POSCAR stored in data
+	POSCAR_dir=CONTCAR_collect
     filename=POSCAR
-    workspace=band
+    workspace=tension
     # Batch type
-    batch_type=sbatch
+    batch_type=sh
     # batch_type=sh/qsub
-    
+
 echo "
 
 Step 3/Step 1: BAND_GAP of PBE_PBE.
 
-POSCAR name  :   ${filename}
+POSCAR name  :   data/${POSCAR_dir}/${filename}
 Workspace    :   ${workspace}
 Batch type   :   ${batch_type}"
 [[ $I2D == 1 ]] && echo "Dimension    :   2D"
 pwd_init=`pwd`
-if [ -f data/${filename} ];then
+if [ -f data/${POSCAR_dir}/${filename} ];then
 	# Make directory
 	mkdir -p ${pwd_init}/${workspace}/3.hse_pbe && cd ${pwd_init}/${workspace}/3.hse_pbe
 	
@@ -30,8 +31,8 @@ if [ -f data/${filename} ];then
 		ln -s ../POSCAR && ln -s ../POTCAR 
 	else
 		cd ..
-		cp ${pwd_init}/data/${filename} ${pwd_init}/${workspace}/POSCAR
-		echo -e "103\n"|vaspkit | grep "POTCAR File No."
+		cp ${pwd_init}/data/${POSCAR_dir}/${filename} ${pwd_init}/${workspace}/POSCAR
+		echo -e "103\n"|vaspkit 2>&1| grep "POTCAR File No."
 		cd 3.hse_pbe && ln -s ../POSCAR && ln -s ../POTCAR 
 	fi
 	
@@ -41,10 +42,10 @@ if [ -f data/${filename} ];then
  		cp ../2.pbe_bnd/KPATH.in .
    	else
     		[[ ${I2D} == 1 ]] && echo -e "302\n2\n" | vaspkit | grep ' ]' || echo -e "303\n2\n" | vaspkit | grep ' ]'
-      	fi
+    fi
 	# Or use a specified KPATH only contains VBM and CBM
 	 # cp ${pwd_init}/data/KPATH_${filename}.in KPATH.in
-	echo -e "251\n2\n0.03\n0.03\n1\n" | vaspkit | grep "K-"
+	echo -e "251\n2\n0.03\n0.04\n1\n" | vaspkit | grep "K-"
 	# If possible, don't set ISYM=0 in INCAR.
 	# Sometimes the generated KPOINTS considered the symmetry that might cause some error.
 	# Otherwise, revise it with IBZKPT generated in 1.PBE_scf which is non-symmetry.
