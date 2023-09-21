@@ -5,7 +5,7 @@
 # Parameters setting
     NCORE=15
     # Filename is the filename of POSCAR stored in data
-    POSCAR_dir=CONTCAR_collect
+    POSCAR_dir=.
     KPATH_dir=.
     filename=POSCAR
     workspace=band
