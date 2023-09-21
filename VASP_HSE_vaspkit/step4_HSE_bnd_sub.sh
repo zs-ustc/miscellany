@@ -7,8 +7,8 @@
     # Filename is the filename of POSCAR stored in data
     POSCAR_dir=CONTCAR_collect
     KPATH_dir=.
-    filename=POSCAR_2atoms
-    workspace=2_atom
+    filename=POSCAR
+    workspace=band
     # Batch type
     batch_type=sbatch
     # batch_type=sh/qsub
