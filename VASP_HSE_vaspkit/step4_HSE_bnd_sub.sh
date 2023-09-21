@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# Prepare necessiary files in data/ directory: POSCAR_filename, INCAR.hse_bnd, vasp.sub.hse_bnd, [KPATH_${filename}.in]
+# Prepare necessiary files in data/ directory: POSCAR, INCAR.hse_bnd, vasp.sub.hse_bnd, [KPATH_${filename}.in]
 
 # Parameters setting
-    NCORE=16
+    NCORE=15
     # Filename is the filename of POSCAR stored in data
-    filename=POSCAR
-    workspace=band
+    POSCAR_dir=CONTCAR_collect
+    KPATH_dir=.
+    filename=POSCAR_2atoms
+    workspace=2_atom
     # Batch type
     batch_type=sbatch
     # batch_type=sh/qsub
@@ -22,7 +24,7 @@ Batch type   :   ${batch_type}"
 
 #run
 pwd_init=`pwd`
-if [ -f data/${filename} ];then
+if [ -f data/${POSCAR_dir}/${filename} ];then
 	# Make directory
 	mkdir -p ${pwd_init}/${workspace}/4.hse_bnd && cd ${pwd_init}/${workspace}/4.hse_bnd
 	if [ -f ../3.hse_pbe/finished ]; then
@@ -30,7 +32,7 @@ if [ -f data/${filename} ];then
 	ln -s ../POSCAR && ln -s ../POTCAR && ln -s ../3.hse_pbe/WAVECAR && ln -s ../3.hse_pbe/CHGCAR
     
 	# KPOINTS: Get line-mode KPOINTS automatically:
- 	[[ -f ${pwd_init}/data/KPATH_${filename}.in ]] && cp ${pwd_init}/data/KPATH_${filename}.in KPATH.in ||cp ../3.hse_pbe/KPATH.in .
+ 	[[ -f ${pwd_init}/data/KPATH_${filename}.in ]] && cp ${pwd_init}/data/${KPATH_dir}/KPATH_${filename}.in KPATH.in ||cp ../3.hse_pbe/KPATH.in .
 	echo -e "251\n2\n0.03\n0.05\n2\n"|vaspkit|grep "K-"
 	# Or use a specified KPATH only contains VBM and CBM
 	 # cp ${pwd_init}/data/KPATH_${filename}.in KPATH.in
