@@ -112,8 +112,7 @@ batch_type='sh'
 if len(sys.argv) >= 3:
     batch_type=sys.argv[2]
 
-#dir_deform = 1 # 1 denotes x while 2 denotes y. Codes here is used for 2-D material. Later I'd add the z directory.
-#print(dir_deform)
+
 strain_interval = 0.01
 start_strain = 0.00
 max_step = 40
