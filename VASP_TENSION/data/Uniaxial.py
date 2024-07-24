@@ -115,12 +115,12 @@ if len(sys.argv) >= 3:
 #dir_deform = 1 # 1 denotes x while 2 denotes y. Codes here is used for 2-D material. Later I'd add the z directory.
 #print(dir_deform)
 strain_interval = 0.01
-start_strain = 0.23
-max_step = 20
+start_strain = 0.00
+max_step = 40
 # Automatics related
 # n_jobs = 1
 time_interval = 60 # units: second
-total_time = 1*24*60*60
+total_time = 3*24*60*60
 circle_index = 0
 stress_max=stress_max_init(cur_filename[0])
 # Main loop
