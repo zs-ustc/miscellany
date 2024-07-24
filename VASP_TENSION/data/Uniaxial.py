@@ -112,16 +112,18 @@ batch_type='sh'
 if len(sys.argv) >= 3:
     batch_type=sys.argv[2]
 
-
+#dir_deform = 1 # 1 denotes x while 2 denotes y. Codes here is used for 2-D material. Later I'd add the z directory.
+#print(dir_deform)
 strain_interval = 0.01
 start_strain = 0.00
-max_step = 40
+max_step = 50
 # Automatics related
 # n_jobs = 1
 time_interval = 60 # units: second
-total_time = 3*24*60*60
+total_time = 1*24*60*60
 circle_index = 0
 stress_max=stress_max_init(cur_filename[0])
+print('Starting main loop');sys.stdout.flush()
 # Main loop
 for n_stage in range(max_step):
     pre_strain = start_strain + (n_stage) * strain_interval
@@ -168,7 +170,7 @@ for n_stage in range(max_step):
                 os.system("cd "+path_output+"&&sh *.sub > %s.out 2>&1"%(str(round(cur_strain*10000)).zfill(4))+" &&cd ..")
                 #os.system('echo "sh *.sub > %s.out 2>&1 &"'%(str(round(cur_strain*10000)).zfill(4)))
             else:
-                os.system("%s *.sub"%(batch_type))
+                os.system("cd "+path_output+" && %s *.sub > %s.out 2>&1" % (batch_type, str(round(cur_strain*10000)).zfill(4)) + " && cd ..")
             os.system("python read_stress_strain.py 1 ")
             os.system("cp %s.jpg ../data/"%(cur_filename[0]))
             break
