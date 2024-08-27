@@ -63,6 +63,7 @@ This script performs the uniaxial tension calculation.
 ### Notes
 - Ensure all necessary files are located in the `data/` directory.
 - Before running each script, check that the parameter settings in the script match the actual conditions.
+- If using a 3D system instead of 2D, modify the I2D variable (I2D=0) at the beginning of the shell scripts.
 - The scripts assume they are run in the same directory and in the specified order.
 
 ### FAQ
@@ -137,9 +138,8 @@ A: The scripts generate output files. Check the respective `.out` files for deta
 
 ### 注意事项
 - 确保所有必要的文件都位于 `data/` 目录中。
-- 每个脚本在运行之前，先检查脚
-
-本中的参数设置是否符合实际情况。
+- 每个脚本在运行之前，先检查脚本中的参数设置是否符合实际情况。
+- 如果二维体系，需要修改shell脚本开头的I2D参数(I2D=0)。
 - 脚本假定在同一目录下运行，并且按照顺序执行。
 
 ### 常见问题
