@@ -7,15 +7,15 @@ do
 		sig1=$(grep "in kB" ./2.elastic/vasp${i}1/OUTCAR | tail -n 1 | awk '{print $3}')
 		sig2=`grep "in kB" ./2.elastic/vasp${i}1/OUTCAR | tail -n 1 | awk '{print $4}'`
 		sig3=`grep "in kB" ./2.elastic/vasp${i}1/OUTCAR | tail -n 1 | awk '{print $5}'`
-		sig4=`grep "in kB" ./2.elastic/vasp${i}1/OUTCAR | tail -n 1 | awk '{print $6}'`
-		sig5=`grep "in kB" ./2.elastic/vasp${i}1/OUTCAR | tail -n 1 | awk '{print $7}'`
-		sig6=`grep "in kB" ./2.elastic/vasp${i}1/OUTCAR | tail -n 1 | awk '{print $8}'`
+		sig6=`grep "in kB" ./2.elastic/vasp${i}1/OUTCAR | tail -n 1 | awk '{print $6}'`
+		sig4=`grep "in kB" ./2.elastic/vasp${i}1/OUTCAR | tail -n 1 | awk '{print $7}'`
+		sig5=`grep "in kB" ./2.elastic/vasp${i}1/OUTCAR | tail -n 1 | awk '{print $8}'`
 		sig7=$(grep "in kB" ./2.elastic/vasp${i}2/OUTCAR | tail -n 1 | awk '{print $3}')
 		sig8=`grep "in kB" ./2.elastic/vasp${i}2/OUTCAR | tail -n 1 | awk '{print $4}'`
 		sig9=`grep "in kB" ./2.elastic/vasp${i}2/OUTCAR | tail -n 1 | awk '{print $5}'`
-		sig10=`grep "in kB" ./2.elastic/vasp${i}2/OUTCAR | tail -n 1 | awk '{print $6}'`
-		sig11=`grep "in kB" ./2.elastic/vasp${i}2/OUTCAR | tail -n 1 | awk '{print $7}'`
-		sig12=`grep "in kB" ./2.elastic/vasp${i}2/OUTCAR | tail -n 1 | awk '{print $8}'`
+		sig12=`grep "in kB" ./2.elastic/vasp${i}2/OUTCAR | tail -n 1 | awk '{print $6}'`
+		sig10=`grep "in kB" ./2.elastic/vasp${i}2/OUTCAR | tail -n 1 | awk '{print $7}'`
+		sig11=`grep "in kB" ./2.elastic/vasp${i}2/OUTCAR | tail -n 1 | awk '{print $8}'`
 	echo "${i},${sig1},${sig2},${sig3},${sig4},${sig5},${sig6},${sig7},${sig8},${sig9},${sig10},${sig11},${sig12}">>./Elastic_stress.csv
 done
 python Stress2Elastic.py
