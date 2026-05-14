@@ -20,8 +20,8 @@ Ionic Relaxation
 NSW    =  400          (Max ionic steps)
 IBRION =  2            (Algorithm: 0-MD; 1-Quasi-New; 2-CG)
 ISIF   =  2           (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 4-Shape/Ions)
-EDIFFG = -1E-02        (Ionic convergence; eV/AA)
+EDIFFG = -1E-04        (Ionic convergence; eV/AA)
 
 ISYM = 0
 SYMPREC=1E-08
-NCORE = 15
+NCORE = 8
